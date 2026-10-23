@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bridgewater PTC · Site Visibility Calendar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ACCESS SCREEN -->
+  <section id="login" class="login hidden">
+    <form id="loginForm" class="login-card" autocomplete="off">
+      <div class="brand-mark">B</div>
+      <div class="eyebrow">BRIDGEWATER PTC</div>
+      <h1>Site Visibility Calendar</h1>
+      <p class="muted">Events • Contractors • PTO / OOO</p>
+      <label for="passkey">Site passkey</label>
+      <input id="passkey" type="password" placeholder="Enter passkey" required />
+      <div id="loginError" class="error"></div>
+      <button class="btn btn-primary btn-lg" type="submit" id="loginBtn">Enter</button>
+      <p class="small muted">This device will stay signed in.</p>
+    </form>
+  </section>
+
+  <!-- APP -->
+  <div id="app" class="app hidden">
+    <header class="header">
+      <div class="brand">
+        <div class="brand-mark">B</div>
+        <div>
+          <div class="eyebrow">BRIDGEWATER PTC</div>
+          <div class="title">Site Visibility Calendar</div>
+          <div class="subtitle">Events • Contractors • PTO / OOO</div>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="now">
+          <div id="nowDate" class="now-date"></div>
+          <div id="nowTime" class="now-time"></div>
+        </div>
+        <button id="addBtn" class="btn btn-add">＋ ADD</button>
+        <button id="logoutBtn" class="btn btn-ghost btn-sm" title="Sign out this device">Sign out</button>
+      </div>
+    </header>
+
+    <div id="demoBanner" class="demo hidden">Demo mode: data is saved on this device only. Add your Supabase settings at the top of app.js for shared data.</div>
+
+    <nav class="toolbar">
+      <div class="seg" id="viewSeg">
+        <button data-view="month" class="active">MONTH</button>
+        <button data-view="week">WEEK</button>
+        <button data-view="day">DAY</button>
+      </div>
+      <div class="seg filters" id="filterSeg">
+        <button data-filter="all" class="active">ALL</button>
+        <button data-filter="event"><span class="dot event"></span>EVENTS</button>
+        <button data-filter="contractor"><span class="dot contractor"></span>CONTRACTORS</button>
+        <button data-filter="pto"><span class="dot pto"></span>PTO / OOO</button>
+      </div>
+      <div class="nav">
+        <button id="prevBtn" class="btn btn-icon" aria-label="Previous">‹</button>
+        <button id="todayBtn" class="btn btn-outline">Today</button>
+        <button id="nextBtn" class="btn btn-icon" aria-label="Next">›</button>
+        <div id="periodLabel" class="period"></div>
+      </div>
+    </nav>
+
+    <section class="today" id="todayBox">
+      <button class="today-toggle" id="todayToggle">
+        <span>TODAY</span><span id="todayCounts" class="today-counts"></span><span class="chev">▾</span>
+      </button>
+      <div class="today-body" id="todayBody"></div>
+    </section>
+
+    <main id="calendar" class="calendar"></main>
+    <div id="status" class="status"></div>
+  </div>
+
+  <!-- MODAL -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-card" id="modalCard"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
